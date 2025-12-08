@@ -1,0 +1,183 @@
+.login-container.alt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0f172a;
+    background: radial-gradient(circle at top left, #1e293b, #0f172a);
+  }
+  
+  /* Neumorphic form style */
+  .login-form.neumorphic {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 16px;
+    box-shadow:
+      8px 8px 20px #0c1a2b,
+      -8px -8px 20px #26374f;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    color: #e2e8f0;
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  
+  .error-message {
+    text-align: center;
+    color: #f87171;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  /* Floating label form group */
+  .floating-label {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .floating-label input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    background-color: #334155;
+    color: #f8fafc;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .floating-label label {
+    position: absolute;
+    top: 50%;
+    left: 48px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #94a3b8;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .floating-label input:focus + label,
+  .floating-label input:not(:placeholder-shown) + label,
+  .floating-label input:valid + label {
+    top: 8px;
+    left: 48px;
+    font-size: 12px;
+    color: #60a5fa;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 18px;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+  }
+  
+  .login-form button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+  }
+  
+  .login-form button:active {
+    transform: translateY(0);
+  }
+  
+  .login-form p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #cbd5e1;
+  }
+  
+  .login-form a {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  
+  .login-form a:hover {
+    text-decoration: underline;
+  }
+/* Toggle Dark/Light Mode */
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #f1f5f9;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  .light .mode-toggle {
+    color: #1e293b;
+  }
+  
+  /* Loading Spinner */
+  .loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Light Mode */
+  body.light-mode,
+  .login-container.light {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  }
+  
+  body.light-mode .login-form.neumorphic {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow:
+      8px 8px 20px #d1d5db,
+      -8px -8px 20px #ffffff;
+    color: #1e293b;
+  }
+  
+  body.light-mode .login-form input {
+    background-color: #e5e7eb;
+    color: #1e293b;
+  }
+  
+  body.light-mode .login-form input:focus + label,
+  body.light-mode .login-form input:not(:placeholder-shown) + label,
+  body.light-mode .login-form input:valid + label {
+    color: #3b82f6;
+  }
+  
+  body.light-mode .login-form p,
+  body.light-mode .login-form a {
+    color: #1e293b;
+  }  

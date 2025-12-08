@@ -1,0 +1,1051 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #003580;
+  --secondary-color: #0077C8;
+  --background-soft: #F4F7FA;
+  --text-color: #333;
+}
+
+/* === FIX ALIGNMENT === */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  main {
+    margin-top: 72px; /* agar tidak ketimpa navbar */
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .layout-content {
+    background: #f8f9fa;
+    padding: 2rem;
+    margin-left: 120px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .layout-content.collapsed {
+    margin-left: 80px;
+  }
+  
+  /* Navbar tetap fixed di atas */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1001;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Sidebar fix dimulai di bawah navbar */
+  .modern-sidebar {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    height: calc(100vh - 72px);
+    width: 250px;
+    background: var(--background-soft);
+    padding: 1.5rem 1rem 1rem 1rem;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+    transition: width 0.3s ease;
+  }
+  
+  .modern-sidebar.collapsed {
+    width: 80px;
+  }
+  
+  .kontak-page,
+  .template-container,
+  .message-container {
+     /* agar tidak ketimpa navbar */
+    margin-left: 120px;
+    transition: margin-left 0.3s ease;
+    box-sizing: border-box;
+    background-color: #f4f6fa;
+  }
+  
+  .kontak-page.collapsed,
+  .template-container.collapsed,
+  .message-container.collapsed {
+    margin-left: 80px;
+  }
+  
+  
+  /* Navbar - lebih tinggi dan elegan */
+  .brand-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.brand-text:hover {
+  color: var(--primary-dark);
+  cursor: default;
+}
+
+
+.modern-sidebar.collapsed {
+  width: 80px;
+  background: linear-gradient(to bottom, #f5f7f9, #eef2f6); /* lebih halus */
+}
+
+.sidebar-header {
+  margin-top: 8px; /* biar sejajar navbar */
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: #e9eff7;
+}
+
+.nav-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.nav-item.active .icon {
+  color: white;
+}
+
+.toggle-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+  
+  /* Dropdown Profil */
+  .dropdown-toggle {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+  }
+  
+  .dropdown-menu {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    min-width: 160px;
+  }
+  
+  .dropdown-item {
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f3f4f6;
+    color: var(--primary-dark);
+  }
+  
+/* Styling umum untuk halaman */
+
+/* STYLE QR PAGE */
+.qr-code-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.timer {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: red;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+button:nth-child(2) {
+    background-color: #f44336;
+}
+
+button:nth-child(2):hover {
+    background-color: #e53935;
+}
+
+/* END QR PAGE */
+
+/* STYLE KONTAK PAGE */
+
+/* === KONTEN HALAMAN KONTAK === */
+
+.kontak-page {
+    padding: 40px;
+    /* Aman dari fixed navbar */
+    font-family: "Poppins", sans-serif;
+    background-color: #f9fafc;
+    box-sizing: border-box;
+    margin-left: 120px;
+    /* menyesuaikan lebar sidebar */
+}
+
+/* === HEADER & TOMBOL === */
+
+.kontak-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.kontak-header h2 {
+    color: #231942;
+    font-size: 28px;
+    margin: 0;
+}
+
+.kontak-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.kontak-actions button,
+.kontak-actions .import-label {
+    background-color: #4a47a3;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.kontak-actions .import-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.kontak-actions .import-label input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.kontak-actions button:hover,
+.kontak-actions .import-label:hover {
+    background-color: #3b3a98;
+}
+
+/* === TABEL KONTAK === */
+
+.kontak-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.kontak-table th,
+.kontak-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #444;
+}
+
+.kontak-table th {
+    background-color: #f1f1f1;
+    color: #333;
+    font-weight: 600;
+}
+
+.kontak-table td:last-child {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* === TOMBOL AKSI DI TABEL === */
+
+.kontak-table button {
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.kontak-table button:hover {
+    opacity: 0.9;
+}
+
+.kontak-table button.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.kontak-table button.edit {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* === MODAL FORM TAMBAH/EDIT === */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #231942;
+}
+
+.modal-box input {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-actions button {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modal-actions .danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-actions button:not(.danger) {
+    background-color: #28a745;
+    color: white;
+}
+
+/* === ANIMASI MASUK === */
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* STYLE TEMPLATE MESSAGE PAGE */
+
+.template-container {
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    margin-left: 120px;
+    /* untuk mengakomodasi sidebar */
+    padding: 40px;
+    
+    /* agar tidak tertutup navbar */
+    background: var(--background-soft);
+    box-sizing: border-box;
+}
+
+.template-form,
+.template-list {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+.template-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.template-form input,
+.template-form textarea {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.var-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.var-buttons button {
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.var-buttons button:hover {
+    background-color: #e2e2e2;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.template-list h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--color-text);
+}
+
+.template-list table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.template-list th,
+.template-list td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    color: #333;
+}
+
+.template-list th {
+    background-color: #f8f9fb;
+    font-weight: 600;
+}
+
+.template-list td:last-child {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.no-template {
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+}
+
+.empty-state img {
+    width: 150px;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .template-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* STYLING MESSAGE PAGE */
+
+/* Improved Layout and Design for Message Page */
+.message-container {
+    padding: 40px;
+    background: #f4f6fa;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 120px;
+    box-sizing: border-box;
+}
+
+.tab-button {
+    padding: 10px 16px;
+    margin-right: 10px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.tab-button.active {
+    background: #4caf50;
+    color: white;
+}
+
+.message-header h1 {
+    font-size: 28px;
+    color: #2c2c2c;
+    margin-bottom: 4px;
+}
+
+.message-header p {
+    font-size: 15px;
+    color: #7a7a7a;
+    margin-bottom: 30px;
+}
+
+.message-grid {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.message-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 350px;
+}
+
+.message-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    flex: 1 1 48%;
+    /* Flex 1 will take up available space */
+    min-width: 350px;
+    box-sizing: border-box;
+}
+
+.message-card:hover {
+    transform: translateY(-2px);
+}
+
+.message-card h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.template-select-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+select,
+textarea {
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 16px;
+    color: #1a202c;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+select:focus,
+textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
+}
+
+.message-actions-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.message-preview {
+    margin-bottom: 16px;
+}
+
+.message-preview .empty-state {
+    padding: 20px;
+    text-align: center;
+    color: #7a7a7a;
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+}
+
+.message-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.message-box {
+    background: #f1f5fb;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 14px;
+    color: #444;
+    border: 1px solid #e0e6f1;
+    white-space: pre-wrap;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background: #f9f9f9;
+}
+
+button {
+    border-radius: 12px;
+    font-weight: 600;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: #4c9eeb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3a89d9;
+}
+
+.btn-secondary {
+    background: #e3e8f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #d5dce8;
+}
+
+.btn-success {
+    background-color: #44c08a;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #38ab78;
+}
+
+.message-contact-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.message-contact-list li {
+    background: #e3e8f0;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #444;
+}
+
+.empty-state {
+    color: #888;
+    font-style: italic;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .message-grid {
+        flex-direction: column;
+    }
+}
+
+.editor-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.editor-actions textarea {
+    background-color: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 15px;
+    resize: vertical;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.editor-actions textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
+}
+
+.editor-transition {
+    animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 28px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-box h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.search-input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 12px;
+    background-color: #f8fafc;
+}
+
+.select-all-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.btn-small {
+    font-size: 13px;
+    padding: 6px 12px;
+    background: #e3e8f0;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-small:hover {
+    background: #d0d6df;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 24px;
+}
+
+.contact-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 48px 12px 16px;
+    /* ruang kanan untuk checkbox */
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background-color: #f9fafb;
+    font-size: 15px;
+    color: #333;
+    transition: background 0.2s;
+    min-height: 48px;
+    overflow: hidden;
+    /* 🔒 Hindari kebocoran */
+    word-break: break-word;
+    flex-wrap: nowrap;
+}
+
+.contact-item:hover {
+    background-color: #eef2f7;
+}
+
+.contact-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-checkbox {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translateY(-50%);
+    scale: 1.2;
+    accent-color: #4c9eeb;
+    margin: 0;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.modal-actions button {
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.modal-history-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .modal-history-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .modal-history-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .tab-button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+  }
+  
+  .tab-button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button.danger {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button.danger:hover{
+    background-color: cadetblue;
+  }
+  
