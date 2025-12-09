@@ -4,9 +4,15 @@ const app = express();
 app.use(express.json());
 
 const authRouter = require("../server/auth");
+const kontakRouter = require("../server/KontakController");
+const historyRouter = require("../server/HistoryController");
+const templateRouter = require("../server/TemplateController");
+const blasterRouter = require("../server/blaster");
 
 app.use("/api", authRouter);
-
-app.listen(3000, () => console.log("API running on port 3000"));
+app.use("/api", kontakRouter);
+app.use("/api", historyRouter);
+app.use("/api", templateRouter);
+app.use("/api", blasterRouter);
 
 module.exports = app;
