@@ -13,7 +13,7 @@ const KontakPage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/kontak");
+      const res = await fetch("/api/kontak");
       const data = await res.json();
       setKontakList(data);
     } catch (err) {
@@ -35,7 +35,7 @@ const KontakPage = () => {
     const confirm = window.confirm("Yakin ingin menghapus kontak ini?");
     if (confirm) {
       try {
-        await fetch(`http://localhost:5000/api/kontak/${id}`, {
+        await fetch(`/api/kontak/${id}`, {
           method: "DELETE",
         });
         fetchData();
@@ -49,7 +49,7 @@ const KontakPage = () => {
     const confirm = window.confirm("Yakin ingin menghapus SEMUA kontak?");
     if (confirm) {
       try {
-        await fetch("http://localhost:5000/api/kontak", {
+        await fetch("/api/kontak", {
           method: "DELETE",
         });
         fetchData();
@@ -64,7 +64,7 @@ const KontakPage = () => {
     try {
       if (kontakBaru.id) {
         const res = await fetch(
-          `http://localhost:5000/api/kontak/${kontakBaru.id}`,
+          `/api/kontak/${kontakBaru.id}`,
           {
             method: "PUT",
             headers: {
@@ -75,7 +75,7 @@ const KontakPage = () => {
         );
         if (res.ok) fetchData();
       } else {
-        const res = await fetch("http://localhost:5000/api/kontak", {
+        const res = await fetch("/api/kontak", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -128,7 +128,7 @@ const KontakPage = () => {
           };
         });
 
-        const res = await fetch("http://localhost:5000/kontak", {
+        const res = await fetch("/kontak", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
