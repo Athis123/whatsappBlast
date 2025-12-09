@@ -18,19 +18,19 @@ const MessagePage = () => {
   const [modalTab, setModalTab] = useState("status");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/kontak")
+    axios.get("/kontak")
       .then((res) => setAllContacts(res.data))
       .catch((err) => console.error("Gagal mengambil kontak:", err));
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/template")
+    axios.get("/api/template")
       .then((res) => setTemplates(res.data))
       .catch((err) => console.error("Gagal mengambil template:", err));
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/auto-blast-status")
+    axios.get("/api/auto-blast-status")
       .then((res) => setAutoBlastStatus(res.data))
       .catch((err) => console.error("Gagal ambil status auto-blast:", err));
   }, []);
@@ -49,7 +49,7 @@ const MessagePage = () => {
     }
   
     try {
-      await axios.put(`http://localhost:5000/api/template/${selectedTemplate.id}`, {
+      await axios.put(`/api/template/${selectedTemplate.id}`, {
         nama_template: selectedTemplate.nama_template, // ✅ sesuaikan dengan nama kolom di DB
         isi: customContent,
       });      
@@ -57,7 +57,7 @@ const MessagePage = () => {
       alert("✅ Template berhasil diperbarui.");
   
       // Refresh daftar template
-      const res = await axios.get("http://localhost:5000/api/template");
+      const res = await axios.get("/api/template");
       setTemplates(res.data);
     } catch (error) {
       console.error("Gagal update template:", error.response?.data || error.message);
@@ -80,14 +80,14 @@ const MessagePage = () => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:5000/api/send-message", {
+      const res = await axios.post("/api/send-message", {
         kontak: selectedContacts,
         pesan: customContent,
         autoBlast: true,
         templateId: selectedTemplate?.id,
       });
 
-      await axios.post("http://localhost:5000/api/set-auto-blast", {
+      await axios.post("/api/set-auto-blast", {
         kontak: selectedContacts.map((c) => c.id),
         templateId: selectedTemplate?.id,
       });
@@ -99,7 +99,7 @@ const MessagePage = () => {
       setIsEditing(false);
       setIsModalOpen(false);
 
-      const updated = await axios.get("http://localhost:5000/kontak");
+      const updated = await axios.get("/kontak");
       setAllContacts(updated.data);
     } catch (error) {
       console.error("Gagal mengirim pesan:", error);
