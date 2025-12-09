@@ -17,7 +17,7 @@ const TemplateMessagePage = () => {
 
   const fetchTemplates = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/template");
+      const res = await axios.get("/api/template");
       setTemplates(res.data);
     } catch (error) {
       console.error("Gagal mengambil data:", error);
@@ -34,12 +34,12 @@ const TemplateMessagePage = () => {
     try {
       if (editId) {
         await axios.put(
-          `http://localhost:5000/api/template/${editId}`,
+          `/api/template/${editId}`,
           payload
         );
         toast.success("Template berhasil diperbarui!");
       } else {
-        await axios.post("http://localhost:5000/api/template", payload);
+        await axios.post("/api/template", payload);
         toast.success("Template berhasil ditambahkan!");
       }
 
@@ -72,7 +72,7 @@ const TemplateMessagePage = () => {
     if (window.confirm("Yakin ingin menghapus template ini?")) {
       try {
         const response = await axios.delete(
-          `http://localhost:5000/api/template/${id}`
+          `/api/template/${id}`
         );
         fetchTemplates(); // Memperbarui daftar template setelah dihapus
         toast.success("Template berhasil dihapus!");
