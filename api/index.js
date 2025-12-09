@@ -5,7 +5,7 @@ app.use(express.json());
 
 const authRouter = require("../server/auth");
 
-app.use("/", authRouter);
+app.use("/api", authRouter);
 
 app.listen(3000, () => console.log("API running on port 3000"));
 
