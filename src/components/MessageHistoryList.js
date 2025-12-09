@@ -13,7 +13,7 @@ const MessageHistoryList = () => {
   // ✅ Gunakan useCallback agar tidak kena warning ESLint
   const fetchData = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/message-history", {
+      const res = await axios.get("/api/message-history", {
         params: filterDate ? { date: filterDate } : {},
       });
       setHistory(res.data);
@@ -39,10 +39,10 @@ const MessageHistoryList = () => {
   const confirmDelete = async () => {
     try {
       if (modalAction?.type === "one" && modalAction?.id) {
-        await axios.delete(`http://localhost:5000/api/message-history/${modalAction.id}`);
+        await axios.delete(`/api/message-history/${modalAction.id}`);
         toast.success("Riwayat berhasil dihapus!");
       } else if (modalAction?.type === "all") {
-        await axios.delete("http://localhost:5000/api/message-history");
+        await axios.delete("/api/message-history");
         toast.success("Semua riwayat berhasil dihapus!");
       }
       fetchData(); // refresh data langsung
