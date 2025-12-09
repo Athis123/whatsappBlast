@@ -1,21 +1,25 @@
-// db.js
+// File: /api/koneksi-db.js atau file Serverless Function lainnya
+
 const mysql = require("mysql2");
 
-// Buat koneksi ke database
+// Hapus semua nilai hardcode! 
+// Ganti dengan mengambil dari Environment Variables Vercel (process.env)
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root", // sesuaikan dengan username database Anda
-  password: "", // sesuaikan dengan password database Anda
-  database: "blast_db", // nama database yang sudah Anda buat
+  host: process.env.DB_HOST,         // Mengambil nilai dari Vercel
+  user: process.env.DB_USER,         // Mengambil nilai dari Vercel
+  password: process.env.DB_PASSWORD, // Mengambil nilai dari Vercel
+  database: process.env.DB_DATABASE, // Mengambil nilai dari Vercel
 });
 
-// Cek koneksi
+// Cek koneksi (hanya akan dijalankan di Server Vercel)
 db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to the database:", err);
-  } else {
-    console.log("Connected to the database");
-  }
+  if (err) {
+    console.error("Error connecting to the database:", err);
+    // Tambahkan log detail host jika perlu untuk debugging
+    console.error("Attempted connection using host:", process.env.DB_HOST);
+  } else {
+    console.log("Connected to the database");
+  }
 });
 
-module.exports = db; // ekspor koneksi untuk digunakan di tempat lain
+module.exports = db;
