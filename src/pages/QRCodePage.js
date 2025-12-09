@@ -14,7 +14,7 @@ const QRCodePage = () => {
   const qrReceived = useRef(false);
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:5000");
+    socketRef.current = io();
 
     socketRef.current.on("qr", (qr) => {
       if (qrReceived.current || isReady) return;
